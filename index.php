@@ -11,6 +11,7 @@ if(isset($_POST['search']))
         $keyword=$_POST['searchkey'];
         $getSearchRecipe=$recipe_obj->getSearchRecipe($keyword);
         $getSearchRecipe=$getSearchRecipe['results'];
+        
         //var_dump($getSearchRecipe);
         //var_dump($getSearchRecipe['results'][0]['offset']);
     }

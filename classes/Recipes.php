@@ -3,12 +3,12 @@ require_once ('vendor/autoload.php');
 
 class Recipe
 {
-	public static $apiKey = "7c3f187e6ebb4f8aaaa0360a0c2e1fd6";
+	public static $apiKey = "5e0b5b753f584e88a43657abf252036f";
 
 	public function getSearchRecipe($searchkey){
 		$endPoint = "https://api.spoonacular.com/recipes/search?apiKey=".$this::$apiKey."&number=5&query=".$searchkey;
-		$recipe = file_get_contents($endPoint);
-		$recipe = json_decode($recipe, true);
+		$recipe = file_get_contents ($endPoint);
+		$recipe = json_decode ($recipe, true);
 		//$recipe = $recipe['title'];
 		return $recipe; 
 	}

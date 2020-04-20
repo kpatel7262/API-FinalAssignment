@@ -2,7 +2,6 @@
 require_once 'classes/Recipes.php';
 
 $recipeID = $_GET['id'];
-
 $recipe = new Recipe();
 
 $info = $recipe->getInfoRecipe($recipeID);
@@ -10,7 +9,6 @@ $r_image = $info['image'];
 
 $steps = $recipe->getRecipeSteps($recipeID);
 //var_dump($steps);
-
 $steps = $steps[0]['steps'];
 //var_dump($steps);
 
@@ -51,17 +49,29 @@ if(isset($_POST['convert-pdf'])){
 	    			<h4><?= $info['title']?></h4>
 	    			<p>Ready in: <?= $info['readyInMinutes']?> minutes</p>
 	    			<p>Serving: <?= $info['servings']?> people</p>
-	    			
+          </div>
+          <div>
+	    			<table class="table table-success">
+              <thead>
+                <h5>To make this delicious dish, please follow these steps..</h5>
+              
+                <tr>
+                  <th>Sequence</th>
+                  <th>Instructions</th>
+                </tr>
+              
+              </thead>
+              <tbody>
 	    			<?php
     	    			foreach($steps as $s){
                   
                     echo (
-                      "<div>".$s['number']." ".$s['step']."</div>"
-                      
+                      "<tr> <th scope='row'>".$s['number']."</th> <td>".$s['step']."</td> </tr>"
                       );
                   }
 	    			?>
-
+            </tbody>
+          </table>
 	    		</div>
 	    	</div>
 	    	<div>
